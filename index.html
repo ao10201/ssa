@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>青·伊莉丝·蒂利克斯 — 同人文字游戏</title>
+<!-- SugarCube 2 single-file HTML -->
+<style>
+  html,body{height:100%;margin:0;background:#000;color:#f5f5f5;font-family: "Noto Sans SC", "Microsoft Yahei", sans-serif}
+  #story{max-width:900px;margin:20px auto;background:#0b0b0b;border:2px solid #220000;padding:18px;border-radius:6px}
+  .hud{display:flex;justify-content:space-between;align-items:center;background:#000;padding:8px 12px;border-radius:6px;border:1px solid #220000;margin-bottom:12px}
+  .hud .day{color:#ff4444;font-weight:700}
+  .stats{color:#ff7777}
+  a.passagelink{color:#ff6666;text-decoration:none;font-weight:700}
+  .dialog{background:#070707;border:1px solid #220000;padding:12px;border-radius:6px;margin:8px 0}
+  .action{margin-top:10px}
+  .speaker{color:#66ccff;font-weight:700}
+  .sname{color:#ffcc66;font-weight:700}
+  .narr{color:#d7d7d7}
+  .note{color:#999999;font-size:0.9em}
+  .warning{color:#ff7777;font-weight:700}
+  footer{font-size:0.85em;color:#777;margin-top:12px}
+</style>
+<!-- Include SugarCube runtime from CDN -->
+<script src="https://cdn.jsdelivr.net/gh/tmedwards/sugarcube-2/dist/format.js"></script>
+</head>
+<body>
+<div id="story">
+  <tw-storydata name="青·伊莉丝·蒂利克斯 同人游戏" startnode="1" creator="SugarCube" creator-version="2.34.1" ifid="GAME-IFID" format="SugarCube" format-version="2.34.1" options=""> 
+
+    <style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style>
+    <script role="script" id="twine-user-script" type="text/twine-javascript"></script>
+
+    <tw-passagedata pid="1" name="Start" tags="" position="50,50">&lt;!-- 初始化及说明 --&gt;
+&lt;!-- StoryInit: 初始化变量 --&gt;
+&lt;script&gt;&lt;!--
+setup.init = function(){
+  /* placeholder */
+};
+--&gt;&lt;/script&gt;
+
+&lt;tw-storydata&gt;
+&lt;/tw-storydata&gt;
+
+&lt;!-- 使用 SugarCube 初始化变量 --&gt;
+&lt;script&gt;
+window.SugarCube = window.SugarCube || {};
+&lt;/script&gt;
+
+&lt;?xml version="1.0"?&gt;
+
+<p class="note">警告：本游戏将所有主要角色设定为 18 岁或以上。你选择了成人向（强烈暗示但不露骨）。本游戏会包含成熟情感与浓烈暗示性描写，但不会有明确的性器官或露骨行为细节。</p>
+
+<p class="note">界面风格：复古黑底红字。每一日分 Morning / Noon / Night 三个时段，共 15 天。右上角会显示当前数值（喜爱／阴暗／压力）。</p>
+
+[[开始游戏|Day1Morning]]
+</tw-passagedata>
+
+    <!-- StoryInit passage to initialize variables and HUD -->
+    <tw-passagedata pid="2" name="StoryInit" tags="StoryInit" position="200,50">&lt;&lt;set $day = 1&gt;&gt;
+&lt;&lt;set $timeOfDay = "Morning"&gt;&gt;
+&lt;&lt;set $affection = 0&gt;&gt;
+&lt;&lt;set $darkness = 0&gt;&gt;
+&lt;&lt;set $stress = 0&gt;&gt;
+
+&lt;&lt;script&gt;
+// HUD 更新将通过 passage 模板更新变量显示
+&lt;/&gt;&gt;
+</tw-passagedata>
+
+    <!-- 下面是 Day1 Morning / Noon / Night 的 passage 以及后续 Day2 ~ Day15 的 passage -->
+
+    <tw-passagedata pid="10" name="HUD" tags="" position="400,50">&lt;div class="hud"&gt;
+  &lt;div class="day"&gt;第 &lt;span id="hud-day"&gt;&lt;&lt;print $day&gt;&gt;&lt;/span&gt; 天 — &lt;span id="hud-time"&gt;&lt;&lt;print $timeOfDay&gt;&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="stats"&gt;喜爱: &lt;span id="hud-aff"&gt;&lt;&lt;print $affection&gt;&gt;&lt;/span&gt; &nbsp; 阴暗: &lt;span id="hud-dark"&gt;&lt;&lt;print $darkness&gt;&gt;&lt;/span&gt; &nbsp; 压力: &lt;span id="hud-stress"&gt;&lt;&lt;print $stress&gt;&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- HUD 只是一个可包含到页面顶部的 passage --&gt;
+
+&lt;button onclick=&quot;location.hash='Day'+$day+'Morning'&quot;&gt;Debug: 跳到当前日 Morning&lt;/button&gt;
+</tw-passagedata>
+
+  </tw-storydata>
+</div>
+<footer class="note">若需修改剧情或成人强度设置，请在仓库中编辑 docs/index.html，并在提交说明中注明变更。</footer>
+</body>
+</html>
